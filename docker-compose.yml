@@ -1,0 +1,43 @@
+version: '3.1'
+
+services:
+  db:
+    build:
+      context: .
+      dockerfile: ./docker/mongo/Dockerfile
+    container_name: proyecto_db01
+    environment:
+      MONGODB_DATABASE: "proyecto"
+      MONGODB_PORT: 27017
+      MONGODB_USER: "db_user"
+      MONGODB_PASSWORD: "db_password_123123!!.."
+      MONGODB_ADMIN_PASSWORD: "db_password_123123!!..admin"
+    hostname: proyecto_db01
+    ports:
+      - "27117:27017"
+    volumes:
+      - ./mongo-data:/data/db
+    restart: always
+  web:
+    build:
+      context: .
+      dockerfile: ./docker/express/Dockerfile
+    container_name: proyecto_ex01
+    command: bash -c "npm install && nodemon app.js"
+    depends_on:
+      - db
+    environment:
+      MONGODB_DATABASE: "proyecto"
+      MONGODB_PORT: 27017
+      MONGODB_USER: "db_user"
+      MONGODB_PASSWORD: "db_password_123123!!.."
+      MONGODB_ADMIN_PASSWORD: "db_password_123123!!..admin"
+    hostname: proyecto_ex01
+    links:
+      - db
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./src:/code
+      - /code/node_modules
+    restart: always
