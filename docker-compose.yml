@@ -23,7 +23,7 @@ services:
       context: .
       dockerfile: ./docker/express/Dockerfile
     container_name: proyecto_ex01
-    command: bash -c "npm install && nodemon app.js"
+    command: bash -c "npm install && npm run dev"
     depends_on:
       - db
     environment:
@@ -37,6 +37,7 @@ services:
       - db
     ports:
       - "5000:5000"
+      - "3000:3000"
     volumes:
       - ./src:/code
       - /code/node_modules
