@@ -18,6 +18,8 @@ class ItemModal extends Component {
     modal: false,
     name: ""
   };
+  
+  
 
   static PropType = {
     isAuthenticated: PropType.bool
@@ -54,7 +56,7 @@ class ItemModal extends Component {
             style={{ marginBottom: "2rem" }}
             onClick={this.toggle}
           >
-            Agregar Item
+            Agregar Pregunta
           </Button>
         ) : (
           <h4 className="mb-3 ml-4" color="dark">
@@ -63,20 +65,20 @@ class ItemModal extends Component {
         )}
 
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle}>Agregar a Dietas</ModalHeader>
+          <ModalHeader toggle={this.toggle}>Agregar Pregunta</ModalHeader>
           <ModalBody>
             <Form onSubmit={this.onSubmit}>
               <FormGroup>
-                <Label for="item">Item</Label>
+                <Label for="item">Pregunta</Label>
                 <Input
                   type="text"
                   name="name"
                   id="item"
-                  placeholder="Agregar Dieta"
+                  placeholder="Agregar Pegunta"
                   onChange={this.onChange}
                 />
                 <Button color="dark" style={{ marginTop: "2rem" }} block>
-                  Agregar Dieta
+                  Agregar Pegunta
                 </Button>
               </FormGroup>
             </Form>

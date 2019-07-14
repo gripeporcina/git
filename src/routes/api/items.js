@@ -35,6 +35,13 @@ Item.findById(req.params.id)
  .then(item => item.remove().then(() => res.json({ succes: true} )))
  .catch(err => res.status(404).json({ succes: false }));
 
-})
+});
+
+/*router.update('/:id',auth,(req, res) => {
+    Item.findById(req.params.id)
+     .then(item => item.update().then(() => res.json({ succes: true} )))
+     .catch(err => res.status(404).json({ succes: false }));
+    
+    });*/
 
 module.exports = router;

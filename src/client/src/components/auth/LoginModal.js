@@ -101,7 +101,7 @@ class LoginModal extends Component {
                   onChange={this.onChange}
                 />
 
-                <Label for="password">Password</Label>
+                <Label for="password">Contraseña</Label>
                 <Input
                   type="password"
                   name="password"

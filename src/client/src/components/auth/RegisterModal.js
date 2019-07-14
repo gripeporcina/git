@@ -66,17 +66,18 @@ class RegisterModal extends Component {
   onSubmit = e => {
     e.preventDefault();
 
-    const { name, email, password } = this.state;
+    const { name, email, password} = this.state;
 
     // Create user object
     const newUser = {
       name,
       email,
-      password
+      password,
     };
 
     // Attempt to register
     this.props.register(newUser);
+  
   };
 
   render() {
@@ -93,14 +94,15 @@ class RegisterModal extends Component {
               <Alert color="danger">{this.state.msg}</Alert>
             ) : null}
             <Form onSubmit={this.onSubmit}>
-              <FormGroup>
+              <FormGroup  >
+              <div >
                 <Label for="name">Nombre</Label>
                 <Input
                   type="text"
                   name="name"
                   id="name"
                   placeholder="Nombre"
-                  className="mb-3"
+                  className="mb-3" 
                   onChange={this.onChange}
                 />
 
@@ -123,9 +125,12 @@ class RegisterModal extends Component {
                   className="mb-3"
                   onChange={this.onChange}
                 />
-                <Button color="dark" style={{ marginTop: "2rem" }} block>
+
+                <Button  style={{ marginTop: "2rem",background:"#008080" }} block>
                   Registrar
                 </Button>
+
+                </div>
               </FormGroup>
             </Form>
           </ModalBody>
